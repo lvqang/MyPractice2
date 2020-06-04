@@ -14,8 +14,8 @@ template<typename T> class heap
 public:
     heap(size_t size):heapTree(new T[size]), spacesize(size), heapSize(0){}
 
-    void initialize();//initial maxheap
-    void addnode();//add node to heap
+    void initialize(T *theHeap, size_t theHeapsize);//initial maxheap
+    void addnode(const T &theNode);//add node to heap
     void delnode();//delete node from heap
     void changeLen(T*, size_t oriLen, size_t desirLed);
 
