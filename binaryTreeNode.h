@@ -1,5 +1,7 @@
-#include<iostream>
-
+#ifndef _BINARYTREENODE_H
+#define _BINARYTREENODE_H
+#include "binaryTreeNode.h"
+#include <iostream>
 
 template<typename T> class binaryTreeNode//创建树节点
 {
@@ -19,5 +21,5 @@ protected:
 private:
         T element;
         binaryTreeNode<T> *leftChild, *rightChild;
-
-}
+};
+#endif
