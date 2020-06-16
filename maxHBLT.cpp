@@ -1,6 +1,6 @@
 #include"maxHBLT.h"
 
-template<typename T> void maxHBLT<T>::meld(binaryTreeNode<pair<int, T>>* x, binaryTreeNode<pair<int, T>>* &y)
+template<typename T> void maxHBLT<T>::meld(shared_ptr< binaryTreeNode<pair<int, T>> > &x, shared_ptr< binaryTreeNode<pair<int, T>> > &y)
 {
     if(y == NULL)
     {
@@ -44,10 +44,10 @@ template<typename T> void maxHBLT::iniHBLT()
     T integer;
     while (std::cin>>integer)
     {
-        shared_ptr< binaryTreeNode<pair<int, T>> > theBinTreeNode(new binaryTreeNode({1, integer}));
+        shared_ptr< binaryTreeNode<pair<int, T>> > theBinTreeNode(   new binaryTreeNode( {1, integer} )   );
         maxHBLTqueue.queuePush(theBinTreeNode);
     }
-    binaryTreeNode<pair<int, T>> *thebinTN1, *thebinTN2;
+    shared_ptr< binaryTreeNode<pair<int, T>> > thebinTN1, thebinTN2;
     while(maxHBLTqueue.queuePop(thebinTN1) != 3)
     {
          if(maxHBLTqueue.queuePop(thebinTN2) != 3)
@@ -60,6 +60,27 @@ template<typename T> void maxHBLT::iniHBLT()
     root = thebinTN1;
 }
 
+
+
+template<typename T> void maxHBLT::meld(maxHBLT<T> &theHBLT)
+{
+        meld(root, theHBLT.root);
+        theHBLT.root = NULL;
+}
+
+
+template<typename T> void maxHBLT::insertHBLT(const T &theElement)
+{
+        shared_ptr< binaryTreeNode<pair<int , T>> > theBinTreeNode(   new binaryTreeNode( {pair<1, theElement>} )   );
+        meld(root, theBinTreeNode);
+}
+
+template<typename T> void maxHBLT::delmaxHBLT()//删除大顶堆
+{
+        shared_ptr< binaryTreeNode<pair<int , T>> > root1 = root->rightChild;
+        root = root->leftChild;
+        meld(root, root1);
+}
 
 
 

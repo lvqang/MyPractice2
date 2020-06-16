@@ -1,1 +1,1 @@
-just for learning
+just practice for myself not for other purpuse
