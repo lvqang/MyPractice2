@@ -7,13 +7,13 @@
 template<typename T> class queue
 {
 public:
-    queue(size_t theQueueSize = 20, size_t theFirPointer = 0, size_t theLasPointer = 0):queueSize(theQueueSize), firstPointer(theFirPointer), lastPointer(theLasPointer) {}
-    void queuePush(binaryTreeNode<T> *);
-    void queuePop(binaryTreeNode<T>* &theBinTreeNode);
+    queue(size_t theFirPointer = 0, size_t theLasPointer = 0):firstPointer(theFirPointer), lastPointer(theLasPointer) {}
+    void queuePush(shared_ptr< binaryTreeNode<T> > theBinTreeNode);
+    int queuePop(shared_ptr< binaryTreeNode<T> > &theBinTreeNode);
 private:
-    static size_t queueSize;
+    static const size_t queueSize = 20;
     size_t firstPointer, lastPointer;
-    binaryTreeNode<T> queueVec[queueSize];
+    shared_ptr< binaryTreeNode<T> > queueVec[queueSize];
 };
 
 #endif

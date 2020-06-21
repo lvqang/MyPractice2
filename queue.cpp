@@ -1,7 +1,7 @@
 #include"queue.h"
 
 
-template<typename T> void queue::queuePush(binaryTreeNode<T> *theBinTreeNode)
+template<typename T> void queue<T>::queuePush(shared_ptr< binaryTreeNode<T> > theBinTreeNode)
 {
 
     queueVec[lastPointer] = theBinTreeNode;
@@ -14,7 +14,7 @@ template<typename T> void queue::queuePush(binaryTreeNode<T> *theBinTreeNode)
 }
 
 
-template<typename T> int queue::queuePop(binaryTreeNode<T>* &theBinTreeNode)
+template<typename T> int queue<T>::queuePop(shared_ptr< binaryTreeNode<T> > &theBinTreeNode)
 {
     if(firstPointer == lastPointer)
     {
